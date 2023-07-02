@@ -12,7 +12,7 @@ public class InventoryWithCells : IInventory
     public int capacity { get; set; }
     public bool isFilled => cells.All(cell => cell.isFilled);
 
-    private List<IInventoryCell> cells; // Все клетки инвентаря
+    List<IInventoryCell> cells; // Все клетки инвентаря
 
     public InventoryWithCells(int capacity)
     {
@@ -89,7 +89,7 @@ public class InventoryWithCells : IInventory
         return false; // Нету места в инвентаре
     }
 
-    private bool TryAddToCell(GameObject sender, IInventoryCell cell, IInventoryEntity entity)
+    bool TryAddToCell(GameObject sender, IInventoryCell cell, IInventoryEntity entity)
     {
         bool placed = cell.amount + entity.amount <= entity.maxEntityLimitInInventory; // Сколько помещается сущности в клетку.
         int amountToAdd = placed ? entity.amount : entity.maxEntityLimitInInventory - cell.amount; // Сколько сущности можно добавить в клетку.
