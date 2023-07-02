@@ -3,8 +3,8 @@ using UnityEngine;
 
 public interface IInventory
 {
-    int capacity { get; }
-    bool isFilled { get; }
+    int Capacity { get; }
+    bool IsFilled { get; }
 
     int GetEntityAmount(Type entityType);
     IInventoryEntity GetEntity(Type entityType); // Получить сущность определенного типа из инвентаря.

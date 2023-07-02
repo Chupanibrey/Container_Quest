@@ -2,35 +2,35 @@ using System;
 
 public class InventoryCell : IInventoryCell
 {
-    public int amount => isEmpty ? 0 : entity.amount;
+    public int Amount => IsEmpty ? 0 : Entity.Status.Amount;
 
-    public int capacity { get; private set; }
+    public int Capacity { get; private set; }
 
-    public bool isFilled => amount == capacity;
+    public bool IsFilled => Amount == Capacity;
 
-    public bool isEmpty => entity == null;
+    public bool IsEmpty => Entity == null;
 
-    public Type entityType => entity?.type;
+    public Type EntityType => Entity?.Type;
 
-    public IInventoryEntity entity { get; private set; }
+    public IInventoryEntity Entity { get; private set; }
 
     // Присваивание сушности к клетке
     public void SetEntity(IInventoryEntity entity)
     {
         // избегаем перезаписи
-        if (!isEmpty)
+        if (!IsEmpty)
             return;
 
-        this.entity = entity;
-        this.capacity = entity.maxEntityLimitInInventory;
+        this.Entity = entity;
+        this.Capacity = entity.Info.MaxEntityLimitInInventory;
     }
 
     public void Clear()
     {
-        if (isEmpty)
+        if (IsEmpty)
             return;
 
-        entity.amount = 0;
-        entity = null;
+        Entity.Status.Amount = 0;
+        Entity = null;
     }
 }
