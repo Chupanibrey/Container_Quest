@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Ball : IInventoryEntity
+public class Circle : IInventoryEntity
 {
     public IInventoryEntityInfo Info { get; }
 
@@ -8,7 +8,7 @@ public class Ball : IInventoryEntity
 
     public Type Type => GetType();
 
-    public Ball(IInventoryEntityInfo info)
+    public Circle(IInventoryEntityInfo info)
     {
         this.Info = info;
         Status = new InventoryEntityStatus();
@@ -16,8 +16,8 @@ public class Ball : IInventoryEntity
 
     public IInventoryEntity Clone()
     {
-        var clonedBall = new Ball(Info);
-        clonedBall.Status.Amount = Status.Amount;
-        return clonedBall;
+        var clonedCircle = new Circle(Info);
+        clonedCircle.Status.Amount = Status.Amount;
+        return clonedCircle;
     }
 }

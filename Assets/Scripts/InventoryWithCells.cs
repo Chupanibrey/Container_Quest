@@ -6,9 +6,9 @@ using UnityEngine;
 public class InventoryWithCells : IInventory
 {
     // События добавления и удаления сущности из инвентаря.
-    public event Action<GameObject, IInventoryEntity, int> OnInventoryEntityAddedEvent;
-    public event Action<GameObject, Type, int> OnInventoryEntityRemovedEvent;
-    public event Action<GameObject> OnInventoryStatusChangedEvent;
+    public event Action<object, IInventoryEntity, int> OnInventoryEntityAddedEvent;
+    public event Action<object, Type, int> OnInventoryEntityRemovedEvent;
+    public event Action<object> OnInventoryStatusChangedEvent;
 
     public int Capacity { get; set; }
     public bool IsFilled => cells.All(cell => cell.IsFilled);
@@ -116,7 +116,7 @@ public class InventoryWithCells : IInventory
         return TryAdd(sender, entity);
     }
 
-    public void TransitFromCellToCell(GameObject sender, IInventoryCell fromCell, IInventoryCell toCell)
+    public void TransitFromCellToCell(object sender, IInventoryCell fromCell, IInventoryCell toCell)
     {
         if (fromCell.IsEmpty || toCell.IsFilled)
             return;

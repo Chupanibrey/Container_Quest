@@ -6,7 +6,7 @@ public class InventoryCell : IInventoryCell
 
     public int Capacity { get; private set; }
 
-    public bool IsFilled => Amount == Capacity;
+    public bool IsFilled => !IsEmpty && Amount == Capacity;
 
     public bool IsEmpty => Entity == null;
 

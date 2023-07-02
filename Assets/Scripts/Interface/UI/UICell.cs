@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class UICell : MonoBehaviour, IDropHandler
 {
-    public void OnDrop(PointerEventData eventData)
+    public virtual void OnDrop(PointerEventData eventData)
     {
         var otherEntityTransform = eventData.pointerDrag.transform;
         otherEntityTransform.SetParent(transform); // Переносим сущность внутрь выбранной клетки
