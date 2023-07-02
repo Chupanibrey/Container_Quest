@@ -1,6 +1,6 @@
 ﻿using System;
 
-public interface InventoryCell
+public interface IInventoryCell
 {
     int amount { get; }
     int capacity { get; }
@@ -8,8 +8,8 @@ public interface InventoryCell
     bool isEmpty { get; }
     Type entityType { get; } // Синтаксический сахар, чтобы не вызывать метод GetType()
 
-    InventoryEntity entity { get; }
+    IInventoryEntity entity { get; }
 
-    void SetEntity(InventoryEntity entity);
+    void SetEntity(IInventoryEntity entity);
     void Clear();
 }
