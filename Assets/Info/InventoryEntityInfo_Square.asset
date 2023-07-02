@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d311374ad41c2ea4e845f3576d0c9531, type: 3}
-  m_Name: InventoryEntityInfo
+  m_Name: InventoryEntityInfo_Square
   m_EditorClassIdentifier: 
-  id: ball_1
-  title: Red ball
-  description: rubber red ball
+  id: square
+  title: Blue square
+  description: Simple square
   maxEntityLimitInInventory: 5
-  spriteIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  spriteIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}

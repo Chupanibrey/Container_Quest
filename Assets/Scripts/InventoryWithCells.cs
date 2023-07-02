@@ -73,7 +73,7 @@ public class InventoryWithCells : IInventory
         return entityUsed.ToArray();
     }
 
-    public bool TryAdd(GameObject sender, IInventoryEntity entity)
+    public bool TryAdd(object sender, IInventoryEntity entity)
     {
         // Пытаемся найти клетку с такой же сущностью, но не заполненную до конца.
         var cellWithSameEntityButNotEmpty = cells.Find(cell => !cell.IsEmpty && cell.EntityType == entity.Type && !cell.IsFilled);
@@ -90,7 +90,7 @@ public class InventoryWithCells : IInventory
         return false; // Нету места в инвентаре
     }
 
-    bool TryAddToCell(GameObject sender, IInventoryCell cell, IInventoryEntity entity)
+    public bool TryAddToCell(object sender, IInventoryCell cell, IInventoryEntity entity)
     {
         bool placed = cell.Amount + entity.Status.Amount <= entity.Info.MaxEntityLimitInInventory; // Сколько помещается сущности в клетку.
         int amountToAdd = placed ? entity.Status.Amount : entity.Info.MaxEntityLimitInInventory - cell.Amount; // Сколько сущности можно добавить в клетку.
@@ -146,7 +146,7 @@ public class InventoryWithCells : IInventory
         OnInventoryStatusChangedEvent?.Invoke(sender);
     }
 
-    public void Remove(GameObject sender, Type entityType, int amount = 1)
+    public void Remove(object sender, Type entityType, int amount = 1)
     {
         var cellsWithEntity = GetAllCells(entityType);
 

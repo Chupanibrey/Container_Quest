@@ -2,10 +2,16 @@
 
 class UIInventory : MonoBehaviour
 {
-    public InventoryWithCells inventory { get; private set; }
+    [SerializeField] InventoryEntityInfo squareInfo;
+    [SerializeField] InventoryEntityInfo circleInfo;
+    UIInventoryRandomizer randomazer;
 
-    void Awale()
+    public InventoryWithCells inventory => randomazer.inventory;
+
+    void Start()
     {
-        inventory = new InventoryWithCells(15);
+        var uiCells = GetComponentsInChildren<UIInventoryCell>();
+        randomazer = new UIInventoryRandomizer(squareInfo, circleInfo, uiCells);
+        randomazer.FillCells();
     }
 }

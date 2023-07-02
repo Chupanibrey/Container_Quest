@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName ="InventoryEntityInfo", menuName ="Gameplay/Entity/Create new EntityInfo")]
-class InvetoryEntityInfo : ScriptableObject, IInventoryEntityInfo
+class InventoryEntityInfo : ScriptableObject, IInventoryEntityInfo
 {
     [SerializeField] string id;
     [SerializeField] string title;

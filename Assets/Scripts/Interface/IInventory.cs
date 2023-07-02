@@ -12,7 +12,7 @@ public interface IInventory
     IInventoryEntity[] GetAllEntities(Type entityType); // Получить все сущности определенного типа, содержащиеся в инвентаре.
     IInventoryEntity[] GetUsedEntities();
 
-    bool TryAdd(GameObject sender, IInventoryEntity entity); // Параметр "sender" используется для отслеживания источника добавления сущности.
-    void Remove(GameObject sender, Type entityType, int amount = 1); // Параметр "amount" указывает количество сущностей для удаления (по умолчанию 1). 
+    bool TryAdd(object sender, IInventoryEntity entity); // Параметр "sender" используется для отслеживания источника добавления сущности.
+    void Remove(object sender, Type entityType, int amount = 1); // Параметр "amount" указывает количество сущностей для удаления (по умолчанию 1). 
     bool HasEntity(Type type, out IInventoryEntity entity); // Проверяет, есть ли сущность определенного типа в инвентаре и возвращает её в случае истины метода.
 }
