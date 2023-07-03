@@ -10,8 +10,8 @@ class UIInventory : MonoBehaviour
 
     void Start()
     {
-        var uiCells = GetComponentsInChildren<UIInventoryCell>();
+        var uiCells = GetComponentsInChildren<UIInventoryCell>(); 
         randomazer = new UIInventoryRandomizer(squareInfo, circleInfo, uiCells);
-        randomazer.FillCells();
+        randomazer.FillCells(); // Заполняем ячейки инвентаря случайными сущностями
     }
 }

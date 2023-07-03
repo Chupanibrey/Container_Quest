@@ -21,13 +21,16 @@ public class UIInventoryCell : UICell
 
     public override void OnDrop(PointerEventData eventData)
     {
+        // Получаем информацию о перетаскиваемой сущности из события.
         var otherEntityUI = eventData.pointerDrag.GetComponent<UIInventoryEntity>();
         var otherCellUI = otherEntityUI.GetComponentInParent<UIInventoryCell>();
+        // Получаем ячейку, из которой была перемещена сущность, и саму ячейку, куда перемещена сущность.
         var otherCell = otherCellUI.Cell;
         var inventory = UIInventory.inventory;
 
         inventory.TransitFromCellToCell(this, otherCell, Cell);
 
+        // После перемещения обновляем отображение текущей и другой ячеек.
         Refresh();
         otherCellUI.Refresh();
     }

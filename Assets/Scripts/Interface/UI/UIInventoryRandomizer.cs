@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 class UIInventoryRandomizer
 {
     InventoryEntityInfo circleInfo;
     InventoryEntityInfo squareInfo;
-    UIInventoryCell[] uiCells;
+    UIInventoryCell[] uiCells; // Массив пользовательских интерфейсов ячеек инвентаря
 
-    public InventoryWithCells inventory { get; }
+    public InventoryWithCells inventory { get; } // Инвентарь с ячейками
 
     public UIInventoryRandomizer(InventoryEntityInfo circleInfo, 
         InventoryEntityInfo squareInfo, UIInventoryCell[] uiCells)
@@ -17,18 +15,18 @@ class UIInventoryRandomizer
         this.squareInfo = squareInfo;
         this.uiCells = uiCells;
 
-        inventory = new InventoryWithCells(15);
-        inventory.OnInventoryStatusChangedEvent += OnInventoryStatusChanged;
+        inventory = new InventoryWithCells(15); // Создаем инвентарь с заданным числом ячеек (в данном случае 15)
+        inventory.OnInventoryStatusChangedEvent += OnInventoryStatusChanged; // Подписываемся на событие изменения статуса инвентаря
     }
 
     public void FillCells()
     {
         var allCells = inventory.GetAllCells();
-        var availableCells = new List<IInventoryCell>(allCells);
+        var availableCells = new List<IInventoryCell>(allCells); // Создаем список доступных для заполнения ячеек
 
-        var filledCells = 5;
+        var filledCells = 5; // Количество ячеек, которые нужно заполнить
 
-        for(int i = 0; i< filledCells; i++)
+        for (int i = 0; i< filledCells; i++)
         {
             var filledCell = AddRandomCircleIntoRandomCell(availableCells);
             availableCells.Remove(filledCell);
@@ -40,7 +38,7 @@ class UIInventoryRandomizer
         SetupInventoryUI(inventory);
     }
 
-    IInventoryCell AddRandomSquareIntoRandomCell(List<IInventoryCell> cells)
+    IInventoryCell AddRandomSquareIntoRandomCell(List<IInventoryCell> cells) // Рандомное заполнение ячеек квадратами
     {
         var rCellIndex = UnityEngine.Random.Range(0, cells.Count);
         var rCell = cells[rCellIndex];
@@ -51,7 +49,7 @@ class UIInventoryRandomizer
         return rCell;
     }
 
-    IInventoryCell AddRandomCircleIntoRandomCell(List<IInventoryCell> cells)
+    IInventoryCell AddRandomCircleIntoRandomCell(List<IInventoryCell> cells) // Рандомное заполнение ячеек кругами
     {
         var rCellIndex = UnityEngine.Random.Range(0, cells.Count);
         var rCell = cells[rCellIndex];
@@ -71,14 +69,14 @@ class UIInventoryRandomizer
         {
             var cell = allCells[i];
             var uiCell = uiCells[i];
-            uiCell.SetCell(cell);
-            uiCell.Refresh();
+            uiCell.SetCell(cell); // Устанавливаем ячейку для отображения в пользовательском интерфейсе
+            uiCell.Refresh(); // Обновляем пользовательский интерфейс ячейки
         }
     }
 
     void OnInventoryStatusChanged(object sender)
     {
-        foreach(var uiCell in uiCells)
+        foreach(var uiCell in uiCells) // При изменении статуса инвентаря обновляем все пользовательские интерфейсы ячеек
             uiCell.Refresh();
     }
 }

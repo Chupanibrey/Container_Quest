@@ -8,7 +8,7 @@ public class UIInventoryEntity : UIEntity
 
     public IInventoryEntity Entity { get; private set; }
 
-    public void Refresh(IInventoryCell cell)
+    public void Refresh(IInventoryCell cell) // ћетод Refresh обновл€ет отображение UIInventoryEntity на основе данных из €чейки инвентар€.
     {
         if (cell.IsEmpty)
         {
@@ -27,7 +27,8 @@ public class UIInventoryEntity : UIEntity
             textAmount.text = $"x{cell.Amount.ToString()}";
     }
 
-    void Cleanup()
+    
+    void Cleanup() // ћетод Cleanup скрывает отображение иконки и текста с количеством сущности.
     {
         textAmount.gameObject.SetActive(false);
         imageIcon.gameObject.SetActive(false);

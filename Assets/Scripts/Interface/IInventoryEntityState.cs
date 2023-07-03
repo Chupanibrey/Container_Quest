@@ -1,6 +1,4 @@
-﻿using System;
-
-public interface IInventoryEntityStatus
+﻿public interface IInventoryEntityStatus
 {
     int Amount { get; set; }
     bool IsUsed { get; set; }
