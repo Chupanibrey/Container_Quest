@@ -14,6 +14,8 @@ public class InventoryCell : IInventoryCell
 
     public IInventoryEntity Entity { get; private set; }
 
+    public int CellNumber { get; set; }
+
     // Присваивание сушности к клетке
     public void SetEntity(IInventoryEntity entity)
     {

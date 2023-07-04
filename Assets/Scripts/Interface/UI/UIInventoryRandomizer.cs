@@ -45,6 +45,7 @@ class UIInventoryRandomizer
         var rCount = UnityEngine.Random.Range(1, 4);
         var square = new Square(squareInfo);
         square.Status.Amount = rCount;
+        square.Status.CellNumber = rCellIndex;
         inventory.TryAddToCell(this, rCell, square);
         return rCell;
     }
@@ -56,6 +57,7 @@ class UIInventoryRandomizer
         var rCount = UnityEngine.Random.Range(1, 4);
         var circle = new Circle(circleInfo);
         circle.Status.Amount = rCount;
+        circle.Status.CellNumber = rCellIndex;
         inventory.TryAddToCell(this, rCell, circle);
         return rCell;
     }
@@ -68,10 +70,11 @@ class UIInventoryRandomizer
         for(int i = 0; i < allCellsCount; i++)
         {
             var cell = allCells[i];
+            cell.CellNumber = i;
             var uiCell = uiCells[i];
             uiCell.SetCell(cell); // Устанавливаем ячейку для отображения в пользовательском интерфейсе
             uiCell.Refresh(); // Обновляем пользовательский интерфейс ячейки
-        }
+        }         
     }
 
     void OnInventoryStatusChanged(object sender)

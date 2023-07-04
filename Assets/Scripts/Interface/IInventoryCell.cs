@@ -7,6 +7,7 @@ public interface IInventoryCell
     bool IsFilled { get; } // Проверяет, заполнена ли ячейка хотя бы одной сущностью.
     bool IsEmpty { get; }
     Type EntityType { get; } // Синтаксический сахар, чтобы не вызывать метод GetType()
+    int CellNumber { get; set; }
 
     IInventoryEntity Entity { get; }
 
